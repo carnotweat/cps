@@ -1,0 +1,5 @@
+(cps-let ((ret (blocking-call))
+          (_load-messages (dante-async-load-current-buffer nil))
+          (target (dante-async-call (concat ":loc-at " symbol))))
+         (let ((xref (dante--make-xref target "def")))
+           (funcall ret (when xref (list xref)))))
